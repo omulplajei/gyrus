@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
+import software.amazon.awssdk.auth.credentials.ProfileCredentialsProvider;
 import software.amazon.awssdk.core.sync.RequestBody;
 import software.amazon.awssdk.regions.Region;
 import software.amazon.awssdk.services.s3.S3Client;
@@ -18,7 +19,7 @@ import software.amazon.awssdk.services.s3.model.PutObjectRequest;
 @RequestMapping("/api")
 public class UploadController {
 
-    private static final String S3_BUCKET = "gyrus";
+    private static final String S3_BUCKET = "gyrus-bucket";
 
 
     @PostMapping("/upload")
@@ -26,8 +27,10 @@ public class UploadController {
 
         S3Client s3Client = S3Client.builder()
             .region(Region.EU_WEST_1)
+            .credentialsProvider(ProfileCredentialsProvider.create())
             .build();
 
+        System.out.println(s3Client.listBuckets().buckets().get(0).name());
 
         PutObjectRequest objectRequest = PutObjectRequest.builder()
             .bucket(S3_BUCKET)
