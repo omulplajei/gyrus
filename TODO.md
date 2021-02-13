@@ -1,0 +1,1 @@
+1. add error handling in S3Delegate

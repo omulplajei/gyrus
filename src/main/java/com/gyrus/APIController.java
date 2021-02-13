@@ -1,7 +1,10 @@
 package com.gyrus;
 
+import com.gyrus.content.Document;
 import com.gyrus.s3.S3Delegate;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -12,7 +15,7 @@ import org.springframework.web.servlet.view.RedirectView;
 
 @RestController
 @RequestMapping("/api")
-public class UploadController {
+public class APIController {
 
     @Autowired
     private S3Delegate s3Delegate;
@@ -23,5 +26,10 @@ public class UploadController {
         redirectAttributes.addFlashAttribute("message", "You successfully uploaded " + file.getOriginalFilename());
 
         return new RedirectView("/success", true);
+    }
+
+    @GetMapping("/list")
+    public List<Document> list() {
+        return s3Delegate.list();
     }
 }
