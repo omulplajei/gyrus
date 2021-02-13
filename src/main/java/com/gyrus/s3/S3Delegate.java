@@ -1,6 +1,8 @@
 package com.gyrus.s3;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
@@ -29,14 +31,16 @@ public class S3Delegate {
 
     public void upload(MultipartFile file) {
         LOG.info("Uploading file " + file.getOriginalFilename());
+
         PutObjectRequest objectRequest = PutObjectRequest.builder()
             .bucket(S3_BUCKET)
-            .key(file.getName())
+            .key(file.getOriginalFilename())
+            .contentType(file.getContentType())
             .build();
         try {
             s3Client.putObject(objectRequest, RequestBody.fromInputStream(file.getInputStream(), file.getSize()));
         } catch (IOException e) {
-            e.printStackTrace();
+            LOG.error("Exception while uploading file ", e);
         }
     }
 }
