@@ -11,7 +11,7 @@ public class LoginController {
     // Login form
     @RequestMapping("/login")
     public String login() {
-        return "login";
+        return "index";
     }
 
     @RequestMapping("/")
