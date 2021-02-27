@@ -14,8 +14,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
 
 @RestController
-@RequestMapping("/api")
-public class APIController {
+@RequestMapping("/document")
+public class DocumentController {
 
     @Autowired
     private S3Delegate s3Delegate;

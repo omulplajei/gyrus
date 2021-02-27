@@ -13,7 +13,7 @@ Applicatiom URL on Heroku
 https://gyrus-app.herokuapp.com/actuator/health
 
 Upload file endpoint
-curl -v -F file=@ticket.txt http://localhost:8080/api/upload
+curl -v -F file=@ticket.txt http://localhost:8080/document/upload
 
 
 # AWS S3 for storage
@@ -43,3 +43,4 @@ You can have an unlimited number of objects in a bucket.
 ## Log DNA
 
 https://app.logdna.com/b4a7f08034/logs/view
+
