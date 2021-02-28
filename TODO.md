@@ -7,6 +7,7 @@ Features:
 https://github.com/oktadeveloper/okta-spring-boot-login-options-example/tree/master/custom-form-auth/src/main/java/com/okta/springsecurityauth
 3. User can see own objects only
 4. User can send file/message to other User/Role
+5. Detect browser language - Bootstrap already does this for displaying messages
 
 Bootstrap themes:
 https://appstack.bootlab.io/index.html

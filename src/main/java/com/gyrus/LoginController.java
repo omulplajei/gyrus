@@ -11,12 +11,11 @@ public class LoginController {
     // Login form
     @RequestMapping("/login")
     public String login() {
-        return "index";
+        return "login";
     }
 
     @RequestMapping("/")
-    @ResponseBody
     public String index() {
-        return "Hello gorgeous!";
+        return "index";
     }
 }

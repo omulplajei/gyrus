@@ -29,7 +29,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.inMemoryAuthentication()
-            .withUser("rares")
+            .withUser("rares@gmail.com")
             .password("{noop}pass") // Spring Security 5 requires specifying the password storage format
             .roles("USER");
     }
