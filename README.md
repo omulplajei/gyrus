@@ -15,6 +15,8 @@ https://gyrus-app.herokuapp.com/actuator/health
 Upload file endpoint
 curl -v -F file=@ticket.txt http://localhost:8080/document/upload
 
+Entry point: https://gyrus-app.herokuapp.com/
+
 
 # AWS S3 for storage
 

@@ -5,6 +5,7 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -32,10 +33,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.inMemoryAuthentication()
-            .withUser("rares@gmail.com")
-            .password("{noop}pass") // Spring Security 5 requires specifying the password storage format
-            .roles("USER");
+        var inMemoryAuth = auth.inMemoryAuthentication();
+        inMemoryAuth.withUser("rares@gmail.com").password("{noop}pass").roles("USER");
+        inMemoryAuth.withUser("omulplajei@yahoo.com").password("{noop}pass").roles("USER");
+        // Spring Security 5 requires specifying the password storage format
     }
 
 }
